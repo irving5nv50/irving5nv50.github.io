@@ -1,39 +1,32 @@
-// Configuración de Firebase
-// Import the functions you need from the SDKs you need
+// Importa las funciones necesarias de Firebase
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Configuración de Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs",
   authDomain: "bellezascaninas-7f05f.firebaseapp.com",
   projectId: "bellezascaninas-7f05f",
-  storageBucket: "bellezascaninas-7f05f.appspot.com",
-  messagingSenderId: "134138110069",
-  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c",
-  measurementId: "G-50RRR2EGEG"
+  // ...otros parámetros
 };
 
-// Initialize Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 // Autenticación con Google
 function googleSignIn() {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth()
-        .signInWithPopup(provider)
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
         .then((result) => {
-            var user = result.user;
-            // Manejo del usuario autenticado
+            const user = result.user;
             console.log('Usuario autenticado:', user);
         }).catch((error) => {
             console.error('Error en la autenticación:', error);
         });
 }
+
+document.getElementById('googleSignIn').addEventListener('click', googleSignIn);
 
 // Event Listener para el botón de inicio de sesión
 document.getElementById('googleSignIn').addEventListener('click', googleSignIn);
