@@ -1,3 +1,28 @@
+// Configuración de Firebase
+var firebaseConfig = {
+    apiKey: "your-api-key",
+    authDomain: "your-project-id.firebaseapp.com",
+    // ...otros parámetros de configuración
+};
+firebase.initializeApp(firebaseConfig);
+
+// Autenticación con Google
+function googleSignIn() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth()
+        .signInWithPopup(provider)
+        .then((result) => {
+            var user = result.user;
+            // Manejo del usuario autenticado
+            console.log('Usuario autenticado:', user);
+        }).catch((error) => {
+            console.error('Error en la autenticación:', error);
+        });
+}
+
+// Event Listener para el botón de inicio de sesión
+document.getElementById('googleSignIn').addEventListener('click', googleSignIn);
+
 let citas = {};
 
 function addAppointment() {
