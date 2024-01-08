@@ -1,6 +1,12 @@
-// Importa las funciones necesarias de Firebase
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+export async function googleSignIn() {
+  const provider =
+    new firebase.auth.
+      GoogleAuthProvider();
+  provider.setCustomParameters(
+    { prompt: "select_account" });
+  await getAuth().
+    signInWithRedirect(provider);
+}
 
 // Configuración de Firebase
 const firebaseConfig = {
