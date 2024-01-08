@@ -1,8 +1,7 @@
 // Configuración de Firebase
 var firebaseConfig = {
-    apiKey: "your-api-key",
-    authDomain: "your-project-id.firebaseapp.com",
-    // ...otros parámetros de configuración
+    apiKey: AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs,
+    authDomain: https://irving5nv50.github.io/,
 };
 firebase.initializeApp(firebaseConfig);
 
