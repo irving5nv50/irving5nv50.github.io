@@ -7,7 +7,10 @@ const firebaseConfig = {
   apiKey: "AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs",
   authDomain: "bellezascaninas-7f05f.firebaseapp.com",
   projectId: "bellezascaninas-7f05f",
-  // ...otros parámetros
+  storageBucket: "bellezascaninas-7f05f.appspot.com",
+  messagingSenderId: "134138110069",
+  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c",
+  measurementId: "G-50RRR2EGEG"
 };
 
 // Inicializa Firebase
