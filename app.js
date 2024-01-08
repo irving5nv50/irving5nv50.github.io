@@ -1,9 +1,17 @@
 // Configuración de Firebase
-var firebaseConfig = {
-    apiKey: AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs,
-    authDomain: https://irving5nv50.github.io/,
+const firebaseConfig = {
+  apiKey: "AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs",
+  authDomain: "bellezascaninas-7f05f.firebaseapp.com",
+  projectId: "bellezascaninas-7f05f",
+  storageBucket: "bellezascaninas-7f05f.appspot.com",
+  messagingSenderId: "134138110069",
+  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c",
+  measurementId: "G-50RRR2EGEG"
 };
-firebase.initializeApp(firebaseConfig);
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 // Autenticación con Google
 function googleSignIn() {
