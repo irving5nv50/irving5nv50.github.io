@@ -1,10 +1,10 @@
-let citas = {};
+let appointments = {};
 
 function addAppointment() {
     const petName = document.getElementById('pet-name').value;
     const appointmentTime = document.getElementById('appointment-time').value;
-    const appointmentId = 'CITA-' + Math.floor(Math.random() * 1000000);
-    citas[appointmentId] = { petName, appointmentTime };
+    const appointmentId = `CITA-${Object.keys(appointments).length + 1}`;
+    appointments[appointmentId] = { petName, appointmentTime };
 
     updateAppointmentsList();
 }
@@ -14,26 +14,23 @@ function editAppointment() {
     const newPetName = document.getElementById('edit-pet-name').value;
     const newAppointmentTime = document.getElementById('edit-appointment-time').value;
 
-    if (citas[appointmentId]) {
-        citas[appointmentId] = { petName: newPetName, appointmentTime: newAppointmentTime };
+    if (appointments[appointmentId]) {
+        appointments[appointmentId] = { petName: newPetName, appointmentTime: newAppointmentTime };
+        updateAppointmentsList();
     }
-
-    updateAppointmentsList();
 }
 
 function queryAppointment() {
     const appointmentId = document.getElementById('query-appointment-id').value;
-    if (citas[appointmentId]) {
-        alert(`Cita encontrada: Mascota - ${citas[appointmentId].petName}, Hora - ${citas[appointmentId].appointmentTime}`);
-    } else {
-        alert("Cita no encontrada.");
+    if (appointments[appointmentId]) {
+        alert(`Cita ${appointmentId}: ${appointments[appointmentId].petName} a las ${appointments[appointmentId].appointmentTime}`);
     }
 }
 
 function cancelAppointment() {
     const appointmentId = document.getElementById('cancel-appointment-id').value;
-    if (citas[appointmentId]) {
-        delete citas[appointmentId];
+    if (appointments[appointmentId]) {
+        delete appointments[appointmentId];
         updateAppointmentsList();
     }
 }
@@ -41,11 +38,11 @@ function cancelAppointment() {
 function updateAppointmentsList() {
     const appointmentsList = document.getElementById('appointments-list');
     appointmentsList.innerHTML = '';
-
-    for (const [id, cita] of Object.entries(citas)) {
-        const appointmentInfo = document.createElement('div');
-        appointmentInfo.textContent = `ID: ${id}, Mascota: ${cita.petName}, Hora: ${cita.appointmentTime}`;
-        appointmentsList.appendChild(appointmentInfo);
+    for (const id in appointments) {
+        const appointment = appointments[id];
+        const appointmentDiv = document.createElement('div');
+        appointmentDiv.textContent = `ID: ${id}, Mascota: ${appointment.petName}, Hora: ${appointment.appointmentTime}`;
+        appointmentsList.appendChild(appointmentDiv);
     }
 }
 
@@ -68,6 +65,7 @@ document.getElementById('cancel-appointment-form').addEventListener('submit', fu
     event.preventDefault();
     cancelAppointment();
 });
+
 
 
 document.getElementById('cancel-appointment-form').addEventListener('submit', function(event) {
