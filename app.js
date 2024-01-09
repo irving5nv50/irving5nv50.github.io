@@ -42,8 +42,25 @@ function addAppointment() {
     const appointmentId = 'CITA-' + Math.floor(Math.random() * 1000000);
     citas[appointmentId] = { petName, appointmentTime };
 
+    showNewAppointment(appointmentId); 
     updateAppointmentsList();
-    document.getElementById('add-appointment-form').reset(); // Resetea el formulario después de agregar
+    document.getElementById('add-appointment-form').reset();
+}
+
+function showNewAppointment(appointmentId) {
+    const cita = citas[appointmentId];
+    const confirmationMessage = `Cita agregada: ID: ${appointmentId}, Mascota: ${cita.petName}, Hora: ${cita.appointmentTime}`;
+    alert(confirmationMessage); 
+}
+
+function addAppointment() {
+    const petName = document.getElementById('pet-name').value;
+    const appointmentTime = document.getElementById('appointment-time').value;
+    const appointmentId = 'CITA-' + Math.floor(Math.random() * 1000000);
+    citas[appointmentId] = { petName, appointmentTime };
+
+    updateAppointmentsList();
+    document.getElementById('add-appointment-form').reset(); 
 }
 
 function cancelAppointment() {
@@ -52,7 +69,7 @@ function cancelAppointment() {
         delete citas[appointmentId];
         updateAppointmentsList();
     }
-    document.getElementById('cancel-appointment-form').reset(); // Resetea el formulario después de cancelar
+    document.getElementById('cancel-appointment-form').reset(); 
 }
 
 function updateAppointmentsList() {
