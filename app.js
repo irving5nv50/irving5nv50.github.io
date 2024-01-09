@@ -42,25 +42,20 @@ function addAppointment() {
     const appointmentId = 'CITA-' + Math.floor(Math.random() * 1000000);
     citas[appointmentId] = { petName, appointmentTime };
 
-    showNewAppointment(appointmentId); 
+    showNewAppointment(appointmentId);
     updateAppointmentsList();
     document.getElementById('add-appointment-form').reset();
 }
 
 function showNewAppointment(appointmentId) {
     const cita = citas[appointmentId];
-    const confirmationMessage = `Cita agregada: ID: ${appointmentId}, Mascota: ${cita.petName}, Hora: ${cita.appointmentTime}`;
-    alert(confirmationMessage); 
-}
+    const appointmentDetails = `ID: ${appointmentId}, Mascota: ${cita.petName}, Hora: ${cita.appointmentTime}`;
 
-function addAppointment() {
-    const petName = document.getElementById('pet-name').value;
-    const appointmentTime = document.getElementById('appointment-time').value;
-    const appointmentId = 'CITA-' + Math.floor(Math.random() * 1000000);
-    citas[appointmentId] = { petName, appointmentTime };
+    const detailsElement = document.getElementById('appointment-details');
+    detailsElement.textContent = appointmentDetails;
 
-    updateAppointmentsList();
-    document.getElementById('add-appointment-form').reset(); 
+    const displayElement = document.getElementById('new-appointment-display');
+    displayElement.style.display = 'block';
 }
 
 function cancelAppointment() {
@@ -69,7 +64,7 @@ function cancelAppointment() {
         delete citas[appointmentId];
         updateAppointmentsList();
     }
-    document.getElementById('cancel-appointment-form').reset(); 
+    document.getElementById('cancel-appointment-form').reset();
 }
 
 function updateAppointmentsList() {
@@ -92,3 +87,4 @@ document.getElementById('cancel-appointment-form').addEventListener('submit', fu
     event.preventDefault();
     cancelAppointment();
 });
+
