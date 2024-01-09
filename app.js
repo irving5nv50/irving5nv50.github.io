@@ -1,39 +1,3 @@
-// Importa las funciones necesarias de Firebase
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-
-// Configuración de Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs",
-  authDomain: "bellezascaninas-7f05f.firebaseapp.com",
-  projectId: "bellezascaninas-7f05f",
-  storageBucket: "bellezascaninas-7f05f.appspot.com",
-  messagingSenderId: "134138110069",
-  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c",
-  measurementId: "G-50RRR2EGEG"
-};
-
-// Inicializa Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-// Autenticación con Google
-function googleSignIn() {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-        .then((result) => {
-            const user = result.user;
-            console.log('Usuario autenticado:', user);
-        }).catch((error) => {
-            console.error('Error en la autenticación:', error);
-        });
-}
-
-document.getElementById('googleSignIn').addEventListener('click', googleSignIn);
-
-// Event Listener para el botón de inicio de sesión
-document.getElementById('googleSignIn').addEventListener('click', googleSignIn);
-
 let citas = {};
 
 function addAppointment() {
@@ -42,20 +6,28 @@ function addAppointment() {
     const appointmentId = 'CITA-' + Math.floor(Math.random() * 1000000);
     citas[appointmentId] = { petName, appointmentTime };
 
-    showNewAppointment(appointmentId);
     updateAppointmentsList();
-    document.getElementById('add-appointment-form').reset();
 }
 
-function showNewAppointment(appointmentId) {
-    const cita = citas[appointmentId];
-    const appointmentDetails = `ID: ${appointmentId}, Mascota: ${cita.petName}, Hora: ${cita.appointmentTime}`;
+function editAppointment() {
+    const appointmentId = document.getElementById('edit-appointment-id').value;
+    const newPetName = document.getElementById('edit-pet-name').value;
+    const newAppointmentTime = document.getElementById('edit-appointment-time').value;
 
-    const detailsElement = document.getElementById('appointment-details');
-    detailsElement.textContent = appointmentDetails;
+    if (citas[appointmentId]) {
+        citas[appointmentId] = { petName: newPetName, appointmentTime: newAppointmentTime };
+    }
 
-    const displayElement = document.getElementById('new-appointment-display');
-    displayElement.style.display = 'block';
+    updateAppointmentsList();
+}
+
+function queryAppointment() {
+    const appointmentId = document.getElementById('query-appointment-id').value;
+    if (citas[appointmentId]) {
+        alert(`Cita encontrada: Mascota - ${citas[appointmentId].petName}, Hora - ${citas[appointmentId].appointmentTime}`);
+    } else {
+        alert("Cita no encontrada.");
+    }
 }
 
 function cancelAppointment() {
@@ -64,7 +36,6 @@ function cancelAppointment() {
         delete citas[appointmentId];
         updateAppointmentsList();
     }
-    document.getElementById('cancel-appointment-form').reset();
 }
 
 function updateAppointmentsList() {
@@ -82,6 +53,22 @@ document.getElementById('add-appointment-form').addEventListener('submit', funct
     event.preventDefault();
     addAppointment();
 });
+
+document.getElementById('edit-appointment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    editAppointment();
+});
+
+document.getElementById('query-appointment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    queryAppointment();
+});
+
+document.getElementById('cancel-appointment-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    cancelAppointment();
+});
+
 
 document.getElementById('cancel-appointment-form').addEventListener('submit', function(event) {
     event.preventDefault();
