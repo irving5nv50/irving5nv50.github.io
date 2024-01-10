@@ -4,84 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bellezas caninas inicio</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f8;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #3498db;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            width: 100%;
-            flex-direction: column;
-            top: 0;
-            z-index: 1000;
-        }
-
-        main {
-            text-align: center;
-            margin: 20px;
-        }
-
-        section {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .boton {
-            padding: 10px 20px;
-            margin: 10px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            color: #fff;
-            transition: background-color 0.3s ease;
-        }
-
-        #azul {
-            background-color: #3498db;
-        }
-
-        #gris {
-            background-color: #95a5a6;
-        }
-
-        .boton:hover {
-            background-color: #2c3e50;
-        }
-        footer{
-            padding: 10px;
-            text-align: center;
-        }
-        button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            background-color: #95a5a6; /* Color de fondo de Google */
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        button img {
-            width: 40px; /* Ajusta el tamaño de los logotipos según sea necesario */
-            margin-right: 10px; /* Ajusta el espacio entre el logo y el texto del botón */
-        }
-    </style>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
@@ -92,7 +15,7 @@
         <p>Para poder acceder debes de autenticarte primero</p>
         <p>Selecciona a continuacion como quieres autenticarte.</p>
         <br>
-        <button onclick="loginFacebook()" id="login_btn" >
+        <button onclick="loginFacebook()" id="login_btn">
             <img src="img/facebook-logo.png" alt="Facebook Logo">
             Iniciar sesión con Facebook
         </button>
@@ -102,56 +25,15 @@
             Iniciar sesión con Google
         </button>
     </section>
-
-    <!-- Nucleo de firebase INDISPENSABLE -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
-
-    <!-- Añadimos los productos de auth y base de datos -->
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
-
-    <script type="text/javascript">
-        var firebaseConfig = {
-  apiKey: "AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs",
-  authDomain: "bellezascaninas-7f05f.firebaseapp.com",
-  projectId: "bellezascaninas-7f05f",
-  storageBucket: "bellezascaninas-7f05f.appspot.com",
-  messagingSenderId: "134138110069",
-  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c"
-        };
-
-        // Inicializamos firebase
-        firebase.initializeApp(firebaseConfig);
-
-        // Iniciar sesión con Facebook
-        var loginFacebook = function() {
-            var provider = new firebase.auth.FacebookAuthProvider();
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-                redireccionamiento(result.user);
-            }).catch(function(error) {
-                console.log(error.message);
-            });
-        }
-
-        // Iniciar sesión con Google
-        var loginGoogle = function() {
-            var provider = new firebase.auth.GoogleAuthProvider();
-            firebase.auth().signInWithPopup(provider).then(function(result) {
-                redireccionamiento(result.user);
-            }).catch(function(error) {
-                console.log(error.message);
-            });
-        }
-
-        // Función de redireccionamiento
-        var redireccionamiento = function(user) {
-            location.href = "main.html";
-        }
-    </script>
+    <script src="scripts.js"></script>
 </body>
 <footer style="background-color: azure; color: black; width: 100%;">
     Barrientos Moz Irving Ismael 2022601698    
 </footer>
 </html>
+
 
 
