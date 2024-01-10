@@ -87,95 +87,65 @@
     <header>
         <h1>Bellezas caninas</h1>
     </header>
-        <br><br><br><br>
-        <section>
-            <p>Para poder acceder debes de autenticarte primero</p>
-            <p>Selecciona a continuacion como quieres autenticarte.</p>
-            <br>
-            <button onclick="loginFacebook()" id="login_btn" >
-                <img src="img/facebook-logo.png" alt="Facebook Logo">
-                Iniciar sesión con Facebook
-              </button>
-              <br><br>
-              <a href="main.html">
-              <button class="facebook" href="">
-                <img src="img/google-logo.png" alt="Google Logo">
-                Iniciar sesión con Google
-              </button>
-            </a>
-        </section>
-        <!-- Nucleo de firebase INDISPENSABLE- -->
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <br><br><br><br>
+    <section>
+        <p>Para poder acceder debes de autenticarte primero</p>
+        <p>Selecciona a continuacion como quieres autenticarte.</p>
+        <br>
+        <button onclick="loginFacebook()" id="login_btn" >
+            <img src="img/facebook-logo.png" alt="Facebook Logo">
+            Iniciar sesión con Facebook
+        </button>
+        <br><br>
+        <button onclick="loginGoogle()" id="login_google_btn">
+            <img src="img/google-logo.png" alt="Google Logo">
+            Iniciar sesión con Google
+        </button>
+    </section>
 
-  <!-- Añadimos los productos de auth y base de datos  -->
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <!-- Nucleo de firebase INDISPENSABLE -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
 
+    <!-- Añadimos los productos de auth y base de datos -->
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
 
-  <script type="text/javascript">
+    <script type="text/javascript">
+        var firebaseConfig = {
+            // Tu configuración de Firebase
+        };
 
-  var firebaseConfig = {
-  apiKey: "AIzaSyD6R-PJdoDiYoCueVljzC7A-SRGsTNZlzs",
-  authDomain: "bellezascaninas-7f05f.firebaseapp.com",
-  projectId: "bellezascaninas-7f05f",
-  storageBucket: "bellezascaninas-7f05f.appspot.com",
-  messagingSenderId: "134138110069",
-  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c"
-	};
+        // Inicializamos firebase
+        firebase.initializeApp(firebaseConfig);
 
-	// Inicializamos firebase
-    firebase.initializeApp(firebaseConfig);
+        // Iniciar sesión con Facebook
+        var loginFacebook = function() {
+            var provider = new firebase.auth.FacebookAuthProvider();
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                redireccionamiento(result.user);
+            }).catch(function(error) {
+                console.log(error.message);
+            });
+        }
 
-  </script>
+        // Iniciar sesión con Google
+        var loginGoogle = function() {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider).then(function(result) {
+                redireccionamiento(result.user);
+            }).catch(function(error) {
+                console.log(error.message);
+            });
+        }
 
-
-  <script type="text/javascript">
-
-  	//variables
-  	var login_btn 		= document.getElementById("login_btn"),
-  		logout_btn 		= document.getElementById("logout_btn"),
-  		user_image 		= document.getElementById("user_image"),
-  		user_name_h1 	= document.getElementById("user_name");
-
-  	//iniciar con Facebook
-  	var loginFacebook = function(){
-
-  	   //proveedor de inicio - Facebook
-        var provider = new firebase.auth.FacebookAuthProvider();
-
-
-  		firebase.auth().signInWithPopup(provider).then(function(result) {
-  		  // Token de google usado para el acceso simulaneo
-  		  var token = result.credential.accessToken;
-  		  // Una vez iniciada la sesion pararemos a tomar los datos del usuario
-  		  var user = result.user;
-			//Si funciona, imprimimos el nombre del usuario
-  		  console.log(user.displayName);
-			//redirigimos a nuestra pagina MAIN
-  		  redireccionamiento(user);
-  		  // ...
-  		}).catch(function(error) {
-  		  // Cachamos errores
-  		  var errorCode = error.code;
-  		  var errorMessage = error.message;
-  		  // Error de email
-  		  var email = error.email;
-  		  // Error de credencial
-  		  var credential = error.credential;
-  		  // ...
-
-  		  console.log(errorMessage);
-  		});
-  	}
-
-  	//Redireccionamos
-  	var redireccionamiento = function(user){
-  		location.href="main.html";
-  	}
-
-  </script>
+        // Función de redireccionamiento
+        var redireccionamiento = function(user) {
+            location.href = "main.html";
+        }
+    </script>
 </body>
 <footer style="background-color: azure; color: black; width: 100%;">
     Barrientos Moz Irving Ismael 2022601698    
 </footer>
 </html>
+
