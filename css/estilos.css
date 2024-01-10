@@ -60,3 +60,23 @@ p label>* {
   box-sizing: border-box;
   width: 100%;
 }
+
+#avatar {
+  max-width: 100px;
+  border-radius: 50%; 
+}
+
+.nav-tabs .nav-link {
+  color: #007bff; /* Cambia el color de los enlaces */
+  background-color: #f8f9fa;
+}
+
+.nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: #e9ecef; 
+}
+
+.card {
+  border: 1px solid #ddd; 
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); 
+}
