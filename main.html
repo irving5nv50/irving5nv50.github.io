@@ -44,8 +44,53 @@
   <script type="module"
     src="cmp/mi-progreso.js">
     </script>
-  <link rel="stylesheet"
-    href="css/estilos.css">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Fondo claro */
+      color: #333; /* Texto oscuro para mejor contraste */
+    }
+
+    header {
+      background-color: #007bff; /* Fondo azul para el encabezado */
+      color: white; /* Texto blanco para el encabezado */
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .card {
+      max-width: 300px; /* Tamaño máximo de la tarjeta */
+      margin: 20px auto; /* Centrar la tarjeta con margen automático */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    .card-img-top {
+      width: 100px; /* Tamaño del avatar */
+      height: 100px; /* Tamaño del avatar */
+      object-fit: cover; /* Ajuste de la imagen del avatar */
+      border-radius: 50%; /* Hacer el avatar circular */
+      margin: 20px auto 10px; /* Margen para centrar el avatar */
+    }
+
+    .card-body {
+      text-align: center; /* Centrar el texto dentro de la tarjeta */
+    }
+
+    .btn-danger {
+      margin-top: 20px; /* Espacio adicional sobre el botón */
+    }
+
+    .nav-tabs {
+      margin-bottom: 20px; /* Espacio debajo de la barra de navegación */
+    }
+
+    .nav-link {
+      color: #495057; /* Color de los enlaces de navegación */
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: #007bff; /* Color al pasar el mouse o enlaces activos */
+    }
+  </style>
 </head>
 <body>
  <form name="forma">
