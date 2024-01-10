@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width,
+       initial-scale=1.0">
+  <title>
+    Alumno Nuevo
+  </title>
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+  <script
+    src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="js/init.js">
+  </script>
+  <script type="module"
+    src="cmp/mi-nav.js">
+    </script>
+  <script type="module"
+    src="cmp/mi-footer.js">
+    </script>
+  <link rel="stylesheet"
+    href="css/estilos.css">
+</head>
+<body>
+  <form name="forma">
+    <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Insertar Nueva Entrada</a>
+            </li>
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Sesion y Accesos</a>
+              <ul class="dropdown-menu">
+                <mi-nav></mi-nav>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" onclick="logout()">Cerrar Sesion</a></li>
+              </ul>
+            </li>
+          </ul>
+    <header>
+      <h1>Alumno Nuevo</h1>
+      <div class="herramientas">
+        <a
+          href="alumnos.html">
+          Cancelar</a>
+        <button type="submit">
+          Guardar
+        </button>
+      </div>
+    </header>
+    <p>
+        <label for="validationServer01">Matricula</label>
+        <input name="matricula" type="text" class="form-control is-valid" id="validationServer01" placeholder="Matricula" required>
+        <div class="valid-feedback">
+          Correcto!
+        </div>
+    </p>
+    <p>
+      <label for="validationServer02">Nombre</label>
+        <input name="nombre" type="text" class="form-control is-valid" id="validationServer02" placeholder="Nombre" required>
+        <div class="valid-feedback">
+          Correcto!
+        </div>
+    </p>
+    <p>
+      <label for="validationServer03">Telefono</label>
+        <input name="telefono" type="text" class="form-control is-valid" id="validationServer03" placeholder="Telefono" required>
+        <div class="valid-feedback">
+          Correcto!
+        </div>
+    </p>
+    <p>
+      <label for="validationServer04">Grupo</label>
+        <input name="grupo" type="text" class="form-control is-valid" id="validationServer04" placeholder="Grupo" required>
+        <div class="valid-feedback">
+          Correcto!
+        </div>
+    </p>
+    <p>
+      <label for="validationServer05">Fecha</label>
+        <input name="fecha" type="date" class="form-control is-valid" id="validationServer05" placeholder="dd/mm/aa" required>
+        <div class="valid-feedback">
+          Correcto!
+        </div>
+    </p>
+    <mi-footer></mi-footer>
+  </form>
+  <script> 
+    var logout = function(){
+    		firebase.auth().signOut().then(function() {
+  		  	location.href="index.html";
+  		}).catch(function(error) {
+  		  // Algun error 
+  		});
+  	}
+  </script>
+  <script type="module"
+    src="js/CtrlAlumnoNuevo.js">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+</body>
+</html>
+
