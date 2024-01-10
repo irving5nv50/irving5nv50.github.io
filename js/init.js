@@ -13,5 +13,5 @@ firebase.initializeApp({
   projectId: "bellezascaninas-7f05f",
   storageBucket: "bellezascaninas-7f05f.appspot.com",
   messagingSenderId: "134138110069",
-  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c",
+  appId: "1:134138110069:web:ea0e7e3dc941eb25ba183c"
 });
