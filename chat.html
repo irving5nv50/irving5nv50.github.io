@@ -27,8 +27,63 @@
   <script type="module"
     src="cmp/mi-progreso.js">
     </script>
-  <link rel="stylesheet"
-    href="css/estilos.css">
+  <style>
+    body {
+      background-color: #f8f9fa; /* Color de fondo suave */
+    }
+
+    header {
+      background-color: #007bff; /* Color de fondo del encabezado */
+      color: white; /* Color del texto del encabezado */
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    .nav-link {
+      color: #495057; /* Color de los enlaces de navegación */
+    }
+
+    .nav-link.active, .nav-link:hover {
+      color: #007bff; /* Color de los enlaces de navegación al pasar el mouse o activos */
+    }
+
+    .dropdown-menu {
+      border-radius: 0.25rem; /* Bordes redondeados para el menú desplegable */
+    }
+
+    .form-control {
+      border-radius: 0.25rem;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .lista {
+      list-style-type: none; /* Elimina los estilos de lista por defecto */
+      padding: 0;
+    }
+
+    .lista li {
+      background-color: #ffffff; /* Color de fondo para los elementos de la lista */
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra suave */
+    }
+
+    .herramientas input[type="text"] {
+      width: calc(100% - 120px); /* Ajusta el ancho del input */
+    }
+
+    .herramientas {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+  </style>
 </head>
 <body>
   <ul class="nav nav-tabs">
